@@ -2,6 +2,8 @@
 
 This project provides an easy to use and user friendly application that retrieves images from NASA's Curiosity,Opportunity and Spirit rovers and displays it . The application also provides an option to send the retrieved images via mail.
 
+/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-08-49.png
+
 
 ## 👩‍💻 Technology Stack
 - Python
@@ -12,6 +14,10 @@ This project provides an easy to use and user friendly application that retrieve
 ### 🖼️ Fetch Image
 This page will allow the user to fetch the images based on certain parameters.
 The parameters are:
+
+
+/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-09-46.png
+
 
 #### 1)Rover name
 - Curiosity
@@ -34,6 +40,11 @@ The parameters are:
 
 ### 📩 Send Mail
 This page will allow you to send the images as attachments to the mail.The user will be able to send it to as many people as they want.
+
+
+/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-11-25.png
+
+
 ### 📋 Extra Features
 - The total number of images fetched will be displayed to the user 
 - In case the specifications that the user mentioned returns zero images,they will be presented with a prompt asking them to enter new specifications.
@@ -46,4 +57,6 @@ This page will allow you to send the images as attachments to the mail.The user 
 This entire project helped me get familiar with PyQt designer and PyQt in general . My experience from doing 'Automate The Boring Stuff With Python' also helped in implementing the functionalities of the application, especially with the modules shutil, requests, os, ezgmail and pathlib.
 I was also able to learn few of the widgets in PyQt5.
 Overall this project was a great opportunity for me to learn and I hope that my efforts will be taken into consideration and I will be able to join the club.
+
+
 

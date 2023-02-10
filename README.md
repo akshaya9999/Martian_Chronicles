@@ -12,7 +12,7 @@ This project provides an easy to use and user friendly application that retrieve
 ### 🖼️ Fetch Image
    This page will allow the user to fetch the images based on certain parameters 
    The parameters are:
-   1.Rover name
+   ####1.Rover name
        -Curiosity
        -Opportunity
        -Spirit

@@ -1,4 +1,4 @@
-# 🚀 MARTIAN CRONICLES
+# 🚀 MARTIAN CHRONICLES
 
 This project provides an easy to use and user friendly application that retrieves images from NASA's Curiosity,Opportunity and Spirit rovers and displays it . The application also provides an option to send the retrieved images via mail.
 

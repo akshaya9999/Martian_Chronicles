@@ -9,7 +9,7 @@ This project provides an easy to use and user friendly application that retrieve
 
 
 ## 📚 User Instructions 
--### 🖼️ Fetch Image
+### 🖼️ Fetch Image
    This page will allow the user to fetch the images based on certain parameters 
    The parameters are:
    1.Rover name
@@ -28,9 +28,9 @@ This project provides an easy to use and user friendly application that retrieve
        -MINITES  : Miniature Thermal Emission Spectrometer (Mini-TES)
    3.Earth date
        Date on earth
--### 📩 Send Mail
+### 📩 Send Mail
    This page will allow you to send the images as attachments to the mail.The user will be able to send it to as many people as they want.
--### 📋 Extra Features
+### 📋 Extra Features
    -The total number of images fetched will be displayed to the user 
    -In case the specifications that the user mentioned returns zero images,they will be presented with a prompt asking them to enter new specifications.
    -On sending the email, the user will be informed if the process was succesful or not with a pop up box.

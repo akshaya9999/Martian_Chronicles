@@ -18,6 +18,10 @@ import os
 import ezgmail
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 
 
@@ -356,10 +360,9 @@ class Ui_MainWindow(object):
 
 
         #getting img links
-        api_key='H25XL5oc119KmywzRcG0FE87NbfFbpSmB8bTahmb'
-        newapi='AVoD1ducDKgBpB5c7HvIGAvBp8S4li9EnxLn8lLF'
-        apiakhil='f3QkA5Na8KLpQP1KG21Z91QRaPMXWbnbqX9J41Yu'
-        api_url=f'https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos?earth_date={date}&camera={camera}&api_key={apiakhil}'
+     
+        apikeyex=str(os.getenv('apiakhil'))
+        api_url=f'https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos?earth_date={date}&camera={camera}&api_key={apikeyex}'
         image_url=[]
         data=requests.get(api_url).json()
         # print(data)

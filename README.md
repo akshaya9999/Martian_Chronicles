@@ -10,6 +10,23 @@ This project provides an easy to use and user friendly application that retrieve
 - Python
 - PyQt
 
+## 🛠 Installation instructions 
+
+Write the following code to clone the repository
+```bash
+git clone https://github.com/akshaya9999/Martian_Chronicles
+```
+
+To install all the required packages type the following code
+```bash
+pip install -r requirements.txt
+```
+
+To Start the application, type
+```bash
+python3 mainwindow.py
+```
+
 
 ## 📚 User Instructions 
 ### 🖼️ Fetch Image

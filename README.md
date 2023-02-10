@@ -2,8 +2,6 @@
 
 This project provides an easy to use and user friendly application that retrieves images from NASA's Curiosity,Opportunity and Spirit rovers and displays it . The application also provides an option to send the retrieved images via mail.
 
-/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-08-49.png
-
 
 ## 👩‍💻 Technology Stack
 - Python
@@ -14,9 +12,6 @@ This project provides an easy to use and user friendly application that retrieve
 ### 🖼️ Fetch Image
 This page will allow the user to fetch the images based on certain parameters.
 The parameters are:
-
-
-/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-09-46.png
 
 
 #### 1)Rover name
@@ -40,9 +35,6 @@ The parameters are:
 
 ### 📩 Send Mail
 This page will allow you to send the images as attachments to the mail.The user will be able to send it to as many people as they want.
-
-
-/home/akshaya/Pictures/Screenshots/Screenshot from 2023-02-10 22-11-25.png
 
 
 ### 📋 Extra Features

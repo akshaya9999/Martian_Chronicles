@@ -19,7 +19,7 @@ import ezgmail
 from pathlib import Path
 
 
-noofimg=0
+
 
 class Ui_MainWindow(object):
     noofimg=0
@@ -404,38 +404,38 @@ class Ui_MainWindow(object):
         self.label_2.setScaledContents(True)
         noofimg=len(image_url)
         
-  
+    
     imgnoo=0
-    x=0
+    
 #     print(noofimg)
 #     nextimgno=imgnoo+1
 #     previmgno=imgnoo-1
     def next(self):
-        
-        if self.imgnoo<noofimg:
+        noofimg=len(os.listdir('/home/akshaya/Martian_Cronicles/images'))
+        # print(self.imgnoo)
+        if self.imgnoo<noofimg-1:
                 self.imgnoo+=1
                 # print(self.imgnoo)
                 pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
                 self.label_2.setPixmap(pixmap)
                 self.label_2.setScaledContents(True)
-        else:
+        elif self.imgnoo>=noofimg-1:
                 # print(self.imgnoo)
-                pixmap=QPixmap(f'images/{self.noofimg}.JPG')
+                pixmap=QPixmap(f'images/{self.noofimg+1}.JPG')
                 self.label_2.setPixmap(pixmap)
                 self.label_2.setScaledContents(True)
                 
         # self.nextimgno+=1
 
-
+    x=0
     def prev(self):
-        
-        if self.imgnoo>-1:
+        if self.imgnoo>0:
                 self.imgnoo-=1
                 # print(self.imgnoo)
                 pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
                 self.label_2.setPixmap(pixmap)
                 self.label_2.setScaledContents(True)
-        else:
+        elif self.imgnoo<=0:
                 # print(self.imgnoo)
                 pixmap=QPixmap(f'images/{self.x}.JPG')
                 self.label_2.setPixmap(pixmap)

@@ -12,11 +12,13 @@ This project provides an easy to use and user friendly application that retrieve
 ### 🖼️ Fetch Image
 This page will allow the user to fetch the images based on certain parameters.
 The parameters are:
-####1)Rover name
+
+#### 1)Rover name
 - Curiosity
 - Opportunity
 - Spirit
-####2)Rover Cameras
+
+#### 2)Rover Cameras
 - FHAZ	 : Front Hazard Avoidance Camera
 - RHAZ	 : Rear Hazard Avoidance Camera
 - MAST	 : Mast Camera
@@ -26,8 +28,10 @@ The parameters are:
 - NAVCAM 	 : Navigation Camera
 - PANCAM 	 : Panoramic Camera
 - MINITES  : Miniature Thermal Emission Spectrometer (Mini-TES)
-####3)Earth date
+
+#### 3)Earth date
 - Date on earth
+
 ### 📩 Send Mail
 This page will allow you to send the images as attachments to the mail.The user will be able to send it to as many people as they want.
 ### 📋 Extra Features

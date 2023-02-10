@@ -457,7 +457,6 @@ class Ui_MainWindow(object):
                 msgbox.setWindowTitle("Email status")
                 msgbox.setStandardButtons(QMessageBox.Ok)
                 msgbox.exec()
-                shutil.rmtree('/home/akshaya/Martian_Cronicles/images')
 
 
 

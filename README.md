@@ -42,7 +42,7 @@ This page will allow you to send the images as attachments to the mail.The user 
 
 
 
-## My Experience
+## 😊 My Experience
 This entire project helped me get familiar with PyQt designer and PyQt in general . My experience from doing 'Automate The Boring Stuff With Python' also helped in implimenting the functionalities of the application,especially with the modules shutil,requests,os,ezgmail and pathlib.
 I was also able to learn few of the widgets in PyQt5.
 Overall this project was a great opportunity for me to learn and I hope that my efforts will be taken into consideration and I will be able to join the club.

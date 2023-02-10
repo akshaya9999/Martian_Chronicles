@@ -22,9 +22,10 @@ from pathlib import Path
 noofimg=0
 
 class Ui_MainWindow(object):
+    noofimg=0
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(950, 604)
+        MainWindow.setFixedSize(950, 604)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setAutoFillBackground(True)
         self.centralwidget.setObjectName("centralwidget")
@@ -357,7 +358,8 @@ class Ui_MainWindow(object):
         #getting img links
         api_key='H25XL5oc119KmywzRcG0FE87NbfFbpSmB8bTahmb'
         newapi='AVoD1ducDKgBpB5c7HvIGAvBp8S4li9EnxLn8lLF'
-        api_url=f'https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos?earth_date={date}&camera={camera}&api_key={api_key}'
+        apiakhil='f3QkA5Na8KLpQP1KG21Z91QRaPMXWbnbqX9J41Yu'
+        api_url=f'https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos?earth_date={date}&camera={camera}&api_key={apiakhil}'
         image_url=[]
         data=requests.get(api_url).json()
         # print(data)
@@ -400,26 +402,45 @@ class Ui_MainWindow(object):
         pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
         self.label_2.setPixmap(pixmap)
         self.label_2.setScaledContents(True)
-        # global noofimg=len(image_url)
+        noofimg=len(image_url)
         
   
     imgnoo=0
-    
+    x=0
+#     print(noofimg)
 #     nextimgno=imgnoo+1
 #     previmgno=imgnoo-1
     def next(self):
-        self.imgnoo+=1
-        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
-        self.label_2.setPixmap(pixmap)
-        self.label_2.setScaledContents(True)
+        
+        if self.imgnoo<noofimg:
+                self.imgnoo+=1
+                # print(self.imgnoo)
+                pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
+                self.label_2.setPixmap(pixmap)
+                self.label_2.setScaledContents(True)
+        else:
+                # print(self.imgnoo)
+                pixmap=QPixmap(f'images/{self.noofimg}.JPG')
+                self.label_2.setPixmap(pixmap)
+                self.label_2.setScaledContents(True)
+                
         # self.nextimgno+=1
 
 
     def prev(self):
-        self.imgnoo-=1
-        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
-        self.label_2.setPixmap(pixmap)
-        self.label_2.setScaledContents(True)
+        
+        if self.imgnoo>-1:
+                self.imgnoo-=1
+                # print(self.imgnoo)
+                pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
+                self.label_2.setPixmap(pixmap)
+                self.label_2.setScaledContents(True)
+        else:
+                # print(self.imgnoo)
+                pixmap=QPixmap(f'images/{self.x}.JPG')
+                self.label_2.setPixmap(pixmap)
+                self.label_2.setScaledContents(True)
+
         # self.previmgno-=1
         
     
@@ -453,7 +474,7 @@ class Ui_MainWindow(object):
         except:
                 msgbox= QMessageBox()
                 msgbox.setIcon(QMessageBox.Information)
-                msgbox.setText("There was an error sending the mail")
+                msgbox.setText("There was an error sending the mail,please try again")
                 msgbox.setWindowTitle("Email status")
                 msgbox.setStandardButtons(QMessageBox.Ok)
                 msgbox.exec()

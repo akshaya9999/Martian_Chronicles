@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(470, 10, 471, 361))
         self.label.setAutoFillBackground(False)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../Pictures/marsrov.jpeg"))
+        self.label.setPixmap(QtGui.QPixmap("marsrov.jpeg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.instructionsbutton = QtWidgets.QPushButton(self.page1)

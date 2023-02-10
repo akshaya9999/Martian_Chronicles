@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QGridLayout, QWidget ,QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QGridLayout, QWidget ,QMessageBox,QTextBrowser
 
 import shutil
 import requests
@@ -19,17 +19,20 @@ import ezgmail
 from pathlib import Path
 
 
+noofimg=0
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(950, 604)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setAutoFillBackground(True)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 951, 601))
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 951, 621))
+        self.stackedWidget.setAutoFillBackground(True)
         self.stackedWidget.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
         self.stackedWidget.setObjectName("stackedWidget")
-        # self.stackedWidget.setLayout(self.centralwidget)
         self.page1 = QtWidgets.QWidget()
         self.page1.setObjectName("page1")
         self.topage2 = QtWidgets.QPushButton(self.page1)
@@ -104,15 +107,16 @@ class Ui_MainWindow(object):
         self.fetchimbutton.setStyleSheet("font: 600 11pt \"URW Bookman\";")
         self.fetchimbutton.setObjectName("fetchimbutton")
         self.pushButton = QtWidgets.QPushButton(self.page2)
-        self.pushButton.setGeometry(QtCore.QRect(420, 470, 89, 25))
+        self.pushButton.setGeometry(QtCore.QRect(410, 490, 89, 25))
         self.pushButton.setStyleSheet("background-color: rgb(222, 221, 218);")
         self.pushButton.setObjectName("pushButton")
         self.nextbutton = QtWidgets.QPushButton(self.page2)
-        self.nextbutton.setGeometry(QtCore.QRect(810, 470, 89, 25))
+        self.nextbutton.setGeometry(QtCore.QRect(810, 490, 89, 25))
         self.nextbutton.setStyleSheet("background-color: rgb(222, 221, 218);")
         self.nextbutton.setObjectName("nextbutton")
         self.label_2 = QtWidgets.QLabel(self.page2)
-        self.label_2.setGeometry(QtCore.QRect(380, 10, 531, 451))
+        self.label_2.setGeometry(QtCore.QRect(390, 30, 531, 451))
+        self.label_2.setText("")
         self.label_2.setObjectName("label_2")
         self.topage3 = QtWidgets.QPushButton(self.page2)
         self.topage3.setGeometry(QtCore.QRect(800, 540, 141, 41))
@@ -120,9 +124,21 @@ class Ui_MainWindow(object):
 "font: 600 11pt \"URW Bookman\";")
         self.topage3.setObjectName("topage3")
         self.textBrowser_4 = QtWidgets.QTextBrowser(self.page2)
-        self.textBrowser_4.setGeometry(QtCore.QRect(0, 260, 321, 61))
+        self.textBrowser_4.setGeometry(QtCore.QRect(0, 260, 331, 61))
         self.textBrowser_4.setStyleSheet("background-color: rgb(222, 221, 218);")
         self.textBrowser_4.setObjectName("textBrowser_4")
+        self.backtomainbut_3 = QtWidgets.QPushButton(self.page2)
+        self.backtomainbut_3.setGeometry(QtCore.QRect(0, 540, 161, 41))
+        self.backtomainbut_3.setStyleSheet("font: 600 11pt \"URW Bookman\";")
+        self.backtomainbut_3.setObjectName("backtomainbut_3")
+        self.textBrowser_11 = QtWidgets.QTextBrowser(self.page2)
+        self.textBrowser_11.setGeometry(QtCore.QRect(440, 0, 431, 31))
+        self.textBrowser_11.setStyleSheet("background-color: rgb(222, 221, 218);")
+        self.textBrowser_11.setObjectName("textBrowser_11")
+        self.textBrowser_12 = QtWidgets.QTextBrowser(self.page2)
+        self.textBrowser_12.setGeometry(QtCore.QRect(0, 470, 341, 51))
+        self.textBrowser_12.setStyleSheet("background-color: rgb(222, 221, 218);")
+        self.textBrowser_12.setObjectName("textBrowser_12")
         self.stackedWidget.addWidget(self.page2)
         self.page3 = QtWidgets.QWidget()
         self.page3.setObjectName("page3")
@@ -158,8 +174,13 @@ class Ui_MainWindow(object):
         self.sendbutton.setGeometry(QtCore.QRect(450, 480, 201, 71))
         self.sendbutton.setStyleSheet("font: 600 11pt \"URW Bookman\";")
         self.sendbutton.setObjectName("sendbutton")
+        self.backtomainbut_2 = QtWidgets.QPushButton(self.page3)
+        self.backtomainbut_2.setGeometry(QtCore.QRect(820, 530, 131, 51))
+        self.backtomainbut_2.setStyleSheet("font: 600 11pt \"URW Bookman\";")
+        self.backtomainbut_2.setObjectName("backtomainbut_2")
         self.stackedWidget.addWidget(self.page3)
         self.page = QtWidgets.QWidget()
+        self.page.setAutoFillBackground(True)
         self.page.setObjectName("page")
         self.textBrowser_9 = QtWidgets.QTextBrowser(self.page)
         self.textBrowser_9.setGeometry(QtCore.QRect(60, 40, 811, 471))
@@ -176,6 +197,8 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+
+
         self.sendbutton.clicked.connect(self.pressed)
         self.fetchimbutton.clicked.connect(self.display)
         self.nextbutton.clicked.connect(self.next)
@@ -186,12 +209,13 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
-        #navigating pages
+         #navigating pages
         self.topage2.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page2))
         self.instructionsbutton.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page))
         self.topage3.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page3))
         self.backtomainbut.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page1))
+        self.backtomainbut_2.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page1))
+        self.backtomainbut_3.clicked.connect(lambda:self.stackedWidget.setCurrentWidget(self.page1))
         
 
     def retranslateUi(self, MainWindow):
@@ -247,7 +271,6 @@ class Ui_MainWindow(object):
         self.fetchimbutton.setText(_translate("MainWindow", "FETCH IMAGE"))
         self.pushButton.setText(_translate("MainWindow", "PREVIOUS"))
         self.nextbutton.setText(_translate("MainWindow", "NEXT"))
-        self.label_2.setText(_translate("MainWindow", "TextLabel"))
         self.topage3.setText(_translate("MainWindow", "MAIL"))
         self.textBrowser_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -256,7 +279,17 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ENTER EARTH DATE</p></body></html>"))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ENTER EARTH DATE</p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">MM/DD/YY</p></body></html>"))
+        self.backtomainbut_3.setText(_translate("MainWindow", "HOME"))
+        self.textBrowser_11.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:700;\">NOTE: Fetching images may take a few minutes,kindly wait</span></p></body></html>"))
         self.textBrowser_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -290,6 +323,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Enter body of mail</p></body></html>"))
         self.sendbutton.setText(_translate("MainWindow", "SEND MAIL"))
+        self.backtomainbut_2.setText(_translate("MainWindow", "HOME"))
         self.textBrowser_9.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -303,28 +337,9 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:20pt; font-weight:400;\">After getting the image you can also send the mail to your friends and loved ones,and let them enjoy the beauty of mars.</span></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Ubuntu\'; font-size:20pt; font-weight:400;\">Just press the MAIL button and you will be taken to a page where you can input the email id and other details and the images will be send as attachments.</span></p></body></html>"))
-        self.backtomainbut.setText(_translate("MainWindow", "BACK"))
+        self.backtomainbut.setText(_translate("MainWindow", "HOME"))
 
-
-    
-    imgnoo=0
-#     nextimgno=imgnoo+1
-#     previmgno=imgnoo-1
-    def next(self):
-        self.imgnoo+=1
-        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
-        self.label_2.setPixmap(pixmap)
-        self.label_2.setScaledContents(True)
-        # self.nextimgno+=1
-
-
-    def prev(self):
-        self.imgnoo-=1
-        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
-        self.label_2.setPixmap(pixmap)
-        self.label_2.setScaledContents(True)
-        # self.previmgno-=1
-        
+           
     k=0 
     def display(self):
         # global rover,camera,date,emailid,subject,body
@@ -334,7 +349,7 @@ class Ui_MainWindow(object):
         # print(camera)
         dateex=self.earthdate.date()
         date=dateex.toPyDate()
-        # print(date)
+        print(date)
         # sol=self.lineEdit.text()
         # sol={sol}&
 
@@ -352,6 +367,18 @@ class Ui_MainWindow(object):
             image_url.append(x)
         print(image_url)
         noofimg=len(image_url)
+        self.textBrowser_12.insertPlainText(f'The no of images obtained is {noofimg}\n')
+        
+        if noofimg==0:
+                msgbox= QMessageBox()
+                msgbox.setIcon(QMessageBox.Information)
+                msgbox.setText("Sorry,there are no images with the current specifications . Please try again with another date or set of specifications")
+                msgbox.setWindowTitle("Image status")
+                msgbox.setStandardButtons(QMessageBox.Ok)
+                msgbox.exec()
+
+
+
         #for image downld
 
         os.makedirs('images',exist_ok=True)
@@ -364,18 +391,36 @@ class Ui_MainWindow(object):
                 imagefile.write(chunk)
             imagefile.close
         k=0
-        for filename in os.listdir('/home/akshaya/newmarsui/images'):
-                exname=f'/home/akshaya/newmarsui/images/{filename}'
-                newname=f'/home/akshaya/newmarsui/images/{k}.JPG'
+        for filename in os.listdir('/home/akshaya/Martian_Cronicles/images'):
+                exname=f'/home/akshaya/Martian_Cronicles/images/{filename}'
+                newname=f'/home/akshaya/Martian_Cronicles/images/{k}.JPG'
                 os.rename(exname,newname)
                 k+=1
         
         pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
         self.label_2.setPixmap(pixmap)
         self.label_2.setScaledContents(True)
+        # global noofimg=len(image_url)
         
-        
+  
+    imgnoo=0
     
+#     nextimgno=imgnoo+1
+#     previmgno=imgnoo-1
+    def next(self):
+        self.imgnoo+=1
+        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
+        self.label_2.setPixmap(pixmap)
+        self.label_2.setScaledContents(True)
+        # self.nextimgno+=1
+
+
+    def prev(self):
+        self.imgnoo-=1
+        pixmap=QPixmap(f'images/{self.imgnoo}.JPG')
+        self.label_2.setPixmap(pixmap)
+        self.label_2.setScaledContents(True)
+        # self.previmgno-=1
         
     
     def pressed(self):
@@ -392,8 +437,8 @@ class Ui_MainWindow(object):
         #to send mail
         try:
                 for i in emailid: 
-                        os.chdir('/home/akshaya/newmarsui/images')
-                        imname=os.listdir('/home/akshaya/newmarsui/images')
+                        os.chdir('/home/akshaya/Martian_Cronicles/images')
+                        imname=os.listdir('/home/akshaya/Martian_Cronicles/images')
                         ezgmail.send(i,subject,body,imname)
 
 
@@ -403,7 +448,7 @@ class Ui_MainWindow(object):
                 msgbox.setWindowTitle("Email status")
                 msgbox.setStandardButtons(QMessageBox.Ok)
                 msgbox.exec()
-                shutil.rmtree('/home/akshaya/newmarsui/images')
+                shutil.rmtree('/home/akshaya/Martian_Cronicles/images')
 
         except:
                 msgbox= QMessageBox()
@@ -412,9 +457,8 @@ class Ui_MainWindow(object):
                 msgbox.setWindowTitle("Email status")
                 msgbox.setStandardButtons(QMessageBox.Ok)
                 msgbox.exec()
-                shutil.rmtree('/home/akshaya/newmarsui/images')
+                shutil.rmtree('/home/akshaya/Martian_Cronicles/images')
 
-                
 
 
 

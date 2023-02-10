@@ -1,0 +1,5 @@
+EZGmail==2022.10.10
+PyQt5==5.15.8
+python-dotenv==0.21.1
+requests==2.23.0
+
